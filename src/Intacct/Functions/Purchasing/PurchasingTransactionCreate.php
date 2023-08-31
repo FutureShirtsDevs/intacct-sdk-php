@@ -51,6 +51,7 @@ class PurchasingTransactionCreate extends AbstractPurchasingTransaction
         }
 
         $xml->writeElement('createdfrom', $this->getCreatedFrom());
+        $xml->writeElement('projectid', $this->getProjectId());
         $xml->writeElement('vendorid', $this->getVendorId(), true);
         $xml->writeElement('documentno', $this->getDocumentNumber());
 
