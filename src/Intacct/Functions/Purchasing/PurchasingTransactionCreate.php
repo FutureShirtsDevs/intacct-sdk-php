@@ -51,7 +51,6 @@ class PurchasingTransactionCreate extends AbstractPurchasingTransaction
         }
 
         $xml->writeElement('createdfrom', $this->getCreatedFrom());
-        $xml->writeElement('projectid', $this->getProjectId());
         $xml->writeElement('vendorid', $this->getVendorId(), true);
         $xml->writeElement('documentno', $this->getDocumentNumber());
 
@@ -101,6 +100,7 @@ class PurchasingTransactionCreate extends AbstractPurchasingTransaction
         $this->writeXmlExplicitCustomFields($xml);
 
         $xml->writeElement('state', $this->getState());
+        $xml->writeElement('projectid', $this->getProjectId());
 
         $xml->startElement('potransitems');
         if (count($this->getLines()) > 0) {
