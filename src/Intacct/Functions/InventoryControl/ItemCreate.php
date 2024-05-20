@@ -125,6 +125,18 @@ class ItemCreate extends AbstractItem
 
         $this->writeXmlImplicitCustomFields($xml);
 
+        if ($this->getComponents()) {
+            $xml->startElement('COMPONENTINFO');
+            foreach ($this->getComponents() as $component) {
+                $xml->startElement('itemcomponent');
+                    $xml->writeElement('ITEMID', $component['itemId']);
+                    $xml->writeElement('COMPONENTKEY', $component['itemId']);
+                    $xml->writeElement('QUANTITY', $component['quantity'] ?? 1);
+                $xml->endElement();
+            }
+            $xml->endElement();
+        }
+
         $xml->endElement(); //ITEM
         $xml->endElement(); //create
 

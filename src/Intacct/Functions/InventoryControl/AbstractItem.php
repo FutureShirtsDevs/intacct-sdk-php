@@ -160,6 +160,8 @@ abstract class AbstractItem extends AbstractFunction
     /** @var string */
     protected $defaultRenewalMacroId;
 
+    /** @var array|null  */
+    protected ?array $components = null;
     /**
      * @return string
      */
@@ -879,4 +881,19 @@ abstract class AbstractItem extends AbstractFunction
     {
         $this->defaultRenewalMacroId = $defaultRenewalMacroId;
     }
+    /**
+     * @param string $itemType
+     */
+    public function setComponents(array $components)
+    {
+        $this->components = $components;
+    }
+    /**
+     * @param string $itemType
+     */
+    public function getComponents(): array|null
+    {
+        return $this->components;
+    }
+
 }
