@@ -80,7 +80,7 @@ class ItemCreate extends AbstractItem
             $xml->writeElement('STATUS', 'inactive');
         }
 
-        $xml->writeElement('PRODUCTLINEID', $this->getProduceLineId());
+        $xml->writeElement('PRODUCTLINEID', $this->getProductLineId());
         $xml->writeElement('COST_METHOD', $this->getCostMethod());
         $xml->writeElement('EXTENDED_DESCRIPTION', $this->getExtendedDescription());
         $xml->writeElement('PODESCRIPTION', $this->getPurchasingDescription());
@@ -122,6 +122,21 @@ class ItemCreate extends AbstractItem
         $xml->writeElement('TOTALPERIODS', $this->getNumberOfPeriods());
         $xml->writeElement('COMPUTEFORSHORTTERM', $this->isProratePriceAllowed());
         $xml->writeElement('RENEWALMACROID', $this->getDefaultRenewalMacroId());
+
+        if ($this->getComponents()) {
+            $xml->startElement('COMPONENTINFO');
+            foreach ($this->getComponents() as $component) {
+                $xml->startElement('itemcomponent');
+                $xml->writeElement('ITEMID', $component['itemId']);
+                $xml->writeElement('COMPONENTKEY', $component['itemId']);
+                $xml->writeElement('QUANTITY', $component['quantity'] ?? 1);
+                if ($component['cost' ?? null]) {
+                    $xml->writeElement('COST', $component['quantity'] ?? 1);
+                }
+                $xml->endElement();
+            }
+            $xml->endElement();
+        }
 
         $this->writeXmlImplicitCustomFields($xml);
 
