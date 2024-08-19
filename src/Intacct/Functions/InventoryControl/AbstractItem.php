@@ -35,7 +35,7 @@ abstract class AbstractItem extends AbstractFunction
     protected $itemName;
 
     /** @var string */
-    protected $produceLineId;
+    protected $productLineId;
 
     /** @var string */
     protected $costMethod;
@@ -160,6 +160,8 @@ abstract class AbstractItem extends AbstractFunction
     /** @var string */
     protected $defaultRenewalMacroId;
 
+    /** @var array|null  */
+    protected ?array $components = null;
     /**
      * @return string
      */
@@ -211,17 +213,17 @@ abstract class AbstractItem extends AbstractFunction
     /**
      * @return string
      */
-    public function getProduceLineId()
+    public function getProductLineId()
     {
-        return $this->produceLineId;
+        return $this->productLineId;
     }
 
     /**
-     * @param string $produceLineId
+     * @param string $productLineId
      */
-    public function setProduceLineId($produceLineId)
+    public function setProductLineId($productLineId)
     {
-        $this->produceLineId = $produceLineId;
+        $this->productLineId = $productLineId;
     }
 
     /**
@@ -878,5 +880,18 @@ abstract class AbstractItem extends AbstractFunction
     public function setDefaultRenewalMacroId($defaultRenewalMacroId)
     {
         $this->defaultRenewalMacroId = $defaultRenewalMacroId;
+    }
+
+    /**
+     * @param array $components
+     */
+    public function setComponents(array $components)
+    {
+        $this->components = $components;
+    }
+
+    public function getComponents(): array|null
+    {
+        return $this->components;
     }
 }
