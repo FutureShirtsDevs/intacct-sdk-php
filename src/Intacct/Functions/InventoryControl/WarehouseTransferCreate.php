@@ -29,9 +29,12 @@ class WarehouseTransferCreate extends AbstractWarehouseTransfer
         if ($this->exchRateTypeId && $this->exchangeRate) {
             throw new InvalidArgumentException('Cannot use both Exchange Rate Type ID and Exchange rate.');
         }
-        $xml->writeElement('EXCH_RATE_TYPE_ID', $this->getExchRateTypeId());
-        $xml->writeElement('EXCH_RATE_DATE', $this->getExchRateDate());
-        $xml->writeElement('EXCHANGE_RATE', $this->getExchangeRate());
+        if ($this->getExchRateTypeId() && $this->getExchRateDate()) {
+            $xml->writeElement('EXCH_RATE_TYPE_ID', $this->getExchRateTypeId());
+            $xml->writeElement('EXCH_RATE_DATE', $this->getExchRateDate());
+        } else if ($this->getExchangeRate()) {
+            $xml->writeElement('EXCHANGE_RATE', $this->getExchangeRate());
+        }
         $xml->startElement('ICTRANFERITEMS');
         if (count($this->getItems()) > 0) {
             foreach ($this->getItems() as $item) {
