@@ -9,16 +9,16 @@ abstract class AbstractWarehouseTransferItem extends AbstractFunction
     protected string $inOut;
     protected string $itemId;
     protected string $warehouseId;
-    protected string $memo;
+    protected string $memo = ''; //Nullish default
     protected int $quantity;
     protected string $unit;
-    protected string $locationId;
-    protected string $departmentId;
-    protected string $projectId;
-    protected string $customerId;
-    protected string $vendorId;
-    protected string $employeeId;
-    protected string $classId;
+    protected string $locationId = ''; //Nullish default
+    protected string $departmentId = ''; //Nullish default
+    protected string $projectId = ''; //Nullish default
+    protected string $customerId = ''; //Nullish default
+    protected string $vendorId = ''; //Nullish default
+    protected string $employeeId = ''; //Nullish default
+    protected string $classId = ''; //Nullish default
 
     public function getInOut(): string
     {

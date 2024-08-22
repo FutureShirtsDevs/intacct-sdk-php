@@ -11,7 +11,9 @@ class WarehouseTransferCreate extends AbstractWarehouseTransfer
     public function writeXml(XMLWriter &$xml)
     {
         $xml->startElement('function');
+
         $xml->writeAttribute('controlid', $this->getControlId());
+
         $xml->startElement('create');
         $xml->startElement('ICTRANSFER');
 
@@ -35,7 +37,8 @@ class WarehouseTransferCreate extends AbstractWarehouseTransfer
         } else if ($this->getExchangeRate()) {
             $xml->writeElement('EXCHANGE_RATE', $this->getExchangeRate());
         }
-        $xml->startElement('ICTRANFERITEMS');
+
+        $xml->startElement('ICTRANSFERITEMS');
         if (count($this->getItems()) > 0) {
             foreach ($this->getItems() as $item) {
                 $item->writeXml($xml);
@@ -43,9 +46,11 @@ class WarehouseTransferCreate extends AbstractWarehouseTransfer
         } else {
             throw new InvalidArgumentException('Warehouse Transfer must have at least 1 Item.');
         }
-        $xml->endElement();
+        $xml->endElement();//ICTRANFERITEMS
 
-        $xml->endElement();
-        $xml->endElement();
+        $xml->endElement();//icTransfer
+        $xml->endElement();//create
+
+        $xml->endElement(); //function
     }
 }
