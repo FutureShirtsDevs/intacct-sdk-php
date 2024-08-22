@@ -69,7 +69,7 @@ class BuildKit extends AbstractInventoryTransaction
         $xml->startElement('function');
         $xml->writeAttribute('controlid', $this->getControlId());
 
-        $xml->startElement('create_ictransaction');
+        $xml->startElement('create_stkittransaction');
 
         $xml->writeElement('transactiontype', 'Build Kits', true);
 
