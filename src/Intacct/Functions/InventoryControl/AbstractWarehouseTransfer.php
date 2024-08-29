@@ -20,9 +20,9 @@ abstract class AbstractWarehouseTransfer extends AbstractFunction
     protected string $action;
     protected string $outDate;
     protected string $inDate;
-    protected string $exchRateTypeId;
-    protected string $exchRateDate;
-    protected string $exchangeRate;
+    protected ?string $exchRateTypeId = null;
+    protected ?string $exchRateDate = null;
+    protected ?string $exchangeRate = null;
     /** @var AbstractWarehouseTransferItem[] */
     protected array $icTransferItems;
 
@@ -126,7 +126,7 @@ abstract class AbstractWarehouseTransfer extends AbstractFunction
         $this->inDate = $inDate;
     }
 
-    public function getExchRateTypeId(): string
+    public function getExchRateTypeId(): string|null
     {
         return $this->exchRateTypeId;
     }
@@ -139,7 +139,7 @@ abstract class AbstractWarehouseTransfer extends AbstractFunction
         $this->exchRateTypeId = $exchRateTypeId;
     }
 
-    public function getExchRateDate(): string
+    public function getExchRateDate(): string|null
     {
         return $this->exchRateDate;
     }
@@ -149,7 +149,7 @@ abstract class AbstractWarehouseTransfer extends AbstractFunction
         $this->exchRateDate = $exchRateDate;
     }
 
-    public function getExchangeRate(): string
+    public function getExchangeRate(): string|null
     {
         return $this->exchangeRate;
     }

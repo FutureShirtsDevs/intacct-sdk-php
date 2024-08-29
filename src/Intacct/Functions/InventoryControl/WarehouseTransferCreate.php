@@ -11,7 +11,9 @@ class WarehouseTransferCreate extends AbstractWarehouseTransfer
     public function writeXml(XMLWriter &$xml)
     {
         $xml->startElement('function');
+
         $xml->writeAttribute('controlid', $this->getControlId());
+
         $xml->startElement('create');
         $xml->startElement('ICTRANSFER');
 
@@ -29,10 +31,14 @@ class WarehouseTransferCreate extends AbstractWarehouseTransfer
         if ($this->exchRateTypeId && $this->exchangeRate) {
             throw new InvalidArgumentException('Cannot use both Exchange Rate Type ID and Exchange rate.');
         }
-        $xml->writeElement('EXCH_RATE_TYPE_ID', $this->getExchRateTypeId());
-        $xml->writeElement('EXCH_RATE_DATE', $this->getExchRateDate());
-        $xml->writeElement('EXCHANGE_RATE', $this->getExchangeRate());
-        $xml->startElement('ICTRANFERITEMS');
+        if ($this->getExchRateTypeId() && $this->getExchRateDate()) {
+            $xml->writeElement('EXCH_RATE_TYPE_ID', $this->getExchRateTypeId());
+            $xml->writeElement('EXCH_RATE_DATE', $this->getExchRateDate());
+        } else if ($this->getExchangeRate()) {
+            $xml->writeElement('EXCHANGE_RATE', $this->getExchangeRate());
+        }
+
+        $xml->startElement('ICTRANSFERITEMS');
         if (count($this->getItems()) > 0) {
             foreach ($this->getItems() as $item) {
                 $item->writeXml($xml);
@@ -40,9 +46,11 @@ class WarehouseTransferCreate extends AbstractWarehouseTransfer
         } else {
             throw new InvalidArgumentException('Warehouse Transfer must have at least 1 Item.');
         }
-        $xml->endElement();
+        $xml->endElement();//ICTRANFERITEMS
 
-        $xml->endElement();
-        $xml->endElement();
+        $xml->endElement();//icTransfer
+        $xml->endElement();//create
+
+        $xml->endElement(); //function
     }
 }
