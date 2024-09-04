@@ -267,7 +267,7 @@ class Filter implements FilterInterface
         $xml->startElement($this->operation);
 
         $xml->writeElement('field', $this->field, false);
-        if ($this->value) {
+        if (is_string($this->value)) {
             if (is_array($this->value)) {
                 foreach ($this->value as $arrayValue) {
                     $xml->writeElement('value', $arrayValue, false);
