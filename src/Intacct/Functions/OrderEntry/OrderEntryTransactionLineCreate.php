@@ -42,6 +42,7 @@ class OrderEntryTransactionLineCreate extends AbstractOrderEntryTransactionLine
         $xml->writeElement('discountpercent', $this->getDiscountPercent());
         $xml->writeElement('price', $this->getPrice());
         $xml->writeElement('discsurchargememo', $this->getDiscountSurchargeMemo());
+        $xml->writeElement('sourcelinekey', $this->getSourceLineKey());
         $xml->writeElement('locationid', $this->getLocationId());
         $xml->writeElement('departmentid', $this->getDepartmentId());
         $xml->writeElement('memo', $this->getMemo());
