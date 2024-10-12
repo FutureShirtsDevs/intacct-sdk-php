@@ -66,7 +66,7 @@ class PurchasingTransactionLineCreate extends AbstractPurchasingTransactionLine
         $xml->writeElement('billable', $this->isBillable());
 
         if (!empty($this->getSourceLineKey())) {
-            $xml->writeElement('sourcedoclineid', $this->getSourceLineKey());
+            $xml->writeElement('sourcelinekey', $this->getSourceLineKey());
         }
 
         $xml->endElement(); //potransitem
