@@ -39,6 +39,11 @@ class PurchasingTransactionLineCreate extends AbstractPurchasingTransactionLine
         $xml->writeElement('quantity', $this->getQuantity(), true);
         $xml->writeElement('unit', $this->getUnit());
         $xml->writeElement('price', $this->getPrice());
+
+        if (!empty($this->getSourceLineKey())) {
+            $xml->writeElement('sourcelinekey', $this->getSourceLineKey());
+        }
+
         $xml->writeElement('overridetaxamount', $this->getOverrideTaxAmount());
         $xml->writeElement('tax', $this->getTax());
         $xml->writeElement('locationid', $this->getLocationId());
@@ -64,10 +69,6 @@ class PurchasingTransactionLineCreate extends AbstractPurchasingTransactionLine
         $xml->writeElement('classid', $this->getClassId());
         $xml->writeElement('contractid', $this->getContractId());
         $xml->writeElement('billable', $this->isBillable());
-
-        if (!empty($this->getSourceLineKey())) {
-            $xml->writeElement('sourcelinekey', $this->getSourceLineKey());
-        }
 
         $xml->endElement(); //potransitem
     }
