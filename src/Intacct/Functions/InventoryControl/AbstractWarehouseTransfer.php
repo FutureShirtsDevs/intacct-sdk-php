@@ -12,19 +12,27 @@ abstract class AbstractWarehouseTransfer extends AbstractFunction
     const STATE_TRANSFER_OUT = 'Transfer Out';
     const STATE_TRANSFER_IN  = 'Transfer In';
 
-    protected string $recordNo;
-    protected string $transactionDate;
-    protected string $referenceNo;
-    protected string $description;
-    protected string $transferType;
-    protected string $action;
-    protected string $outDate;
-    protected string $inDate;
+    /** @var string */
+    protected $recordNo;
+    /** @var string */
+    protected $transactionDate;
+    /** @var string */
+    protected $referenceNo;
+    /** @var string */
+    protected $description;
+    /** @var string */
+    protected $transferType;
+    /** @var string */
+    protected $action;
+    /** @var string */
+    protected $outDate;
+    /** @var string */
+    protected $inDate;
     protected ?string $exchRateTypeId = null;
     protected ?string $exchRateDate = null;
     protected ?string $exchangeRate = null;
     /** @var AbstractWarehouseTransferItem[] */
-    protected array $icTransferItems;
+    protected $icTransferItems = [];
 
     public function getRecordNo(): string
     {
