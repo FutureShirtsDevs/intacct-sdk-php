@@ -87,6 +87,9 @@ abstract class AbstractOrderEntryTransactionLine
     protected $departmentId;
 
     /** @var string */
+    protected $sourceLineKey;
+
+    /** @var string */
     protected $locationId;
 
     /** @var string */
@@ -425,6 +428,22 @@ abstract class AbstractOrderEntryTransactionLine
     public function setDepartmentId($departmentId)
     {
         $this->departmentId = $departmentId;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSourceLineKey()
+    {
+        return $this->sourceLineKey;
+    }
+
+    /**
+     * @param string $sourceLineKey
+     */
+    public function setSourceLineKey($sourceLineKey)
+    {
+        $this->sourceLineKey = $sourceLineKey;
     }
 
     /**

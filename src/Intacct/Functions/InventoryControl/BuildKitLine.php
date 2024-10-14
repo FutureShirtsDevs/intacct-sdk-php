@@ -15,14 +15,14 @@
  * permissions and limitations under the License.
  */
 
-namespace Intacct\Functions\OrderEntry;
+namespace Intacct\Functions\InventoryControl;
 
 use Intacct\Xml\XMLWriter;
 
 /**
- * Create a new order entry transaction line record
+ * Create a new inventory control transaction line record
  */
-class OrderEntryTransactionLineCreate extends AbstractOrderEntryTransactionLine
+class BuildKitLine extends AbstractInventoryTransactionLine
 {
 
     /**
@@ -30,22 +30,16 @@ class OrderEntryTransactionLineCreate extends AbstractOrderEntryTransactionLine
      */
     public function writeXml(XMLWriter &$xml)
     {
-        $xml->startElement('sotransitem');
+        $xml->startElement('stkittransitem');
 
-        $xml->writeElement('bundlenumber', $this->getBundleNumber());
         $xml->writeElement('itemid', $this->getItemId(), true);
         $xml->writeElement('itemdesc', $this->getItemDescription());
-        $xml->writeElement('taxable', $this->isTaxable());
         $xml->writeElement('warehouseid', $this->getWarehouseId());
         $xml->writeElement('quantity', $this->getQuantity(), true);
         $xml->writeElement('unit', $this->getUnit());
-        $xml->writeElement('discountpercent', $this->getDiscountPercent());
-        $xml->writeElement('price', $this->getPrice());
-        $xml->writeElement('discsurchargememo', $this->getDiscountSurchargeMemo());
-        $xml->writeElement('sourcelinekey', $this->getSourceLineKey());
+//        $xml->writeElement('cost', $this->getCost());
         $xml->writeElement('locationid', $this->getLocationId());
         $xml->writeElement('departmentid', $this->getDepartmentId());
-        $xml->writeElement('memo', $this->getMemo());
 
         if (count($this->getItemDetails()) > 0) {
             $xml->startElement('itemdetails');
@@ -57,33 +51,13 @@ class OrderEntryTransactionLineCreate extends AbstractOrderEntryTransactionLine
 
         $this->writeXmlExplicitCustomFields($xml);
 
-        $xml->writeElement('revrectemplate', $this->getRevRecTemplate());
-
-        if ($this->getRevRecStartDate()) {
-            $xml->startElement('revrecstartdate');
-            $xml->writeDateSplitElements($this->getRevRecStartDate(), true);
-            $xml->endElement(); //revrecstartdate
-        }
-
-        if ($this->getRevRecEndDate()) {
-            $xml->startElement('revrecenddate');
-            $xml->writeDateSplitElements($this->getRevRecEndDate(), true);
-            $xml->endElement(); //revrecenddate
-        }
-
-        $xml->writeElement('renewalmacro', $this->getRenewalMacro());
         $xml->writeElement('projectid', $this->getProjectId());
         $xml->writeElement('customerid', $this->getCustomerId());
         $xml->writeElement('vendorid', $this->getVendorId());
         $xml->writeElement('employeeid', $this->getEmployeeId());
         $xml->writeElement('classid', $this->getClassId());
         $xml->writeElement('contractid', $this->getContractId());
-        if (isset($this->fulfillmentStatus)) {
-            $this->fulfillmentStatus->writeXml($xml);
-        }
-        $xml->writeElement('taskno', $this->getTaskNumber());
-        $xml->writeElement('billingtemplate', $this->getBillingTemplate());
 
-        $xml->endElement(); //sotransitem
+        $xml->endElement(); //stkittransitem
     }
 }

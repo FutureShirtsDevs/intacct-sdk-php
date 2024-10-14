@@ -32,6 +32,9 @@ abstract class AbstractPurchasingTransactionLine
     /** @var string */
     protected $itemDescription;
 
+    /** @var string */
+    protected $sourceLineKey;
+
     /** @var bool */
     protected $taxable;
 
@@ -151,6 +154,22 @@ abstract class AbstractPurchasingTransactionLine
     public function setWarehouseId($warehouseId)
     {
         $this->warehouseId = $warehouseId;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSourceLineKey()
+    {
+        return $this->sourceLineKey;
+    }
+
+    /**
+     * @param string $sourceLineKey
+     */
+    public function setSourceLineKey($sourceLineKey)
+    {
+        $this->sourceLineKey = $sourceLineKey;
     }
 
     /**
