@@ -34,7 +34,7 @@ abstract class AbstractWarehouseTransfer extends AbstractFunction
     /** @var AbstractWarehouseTransferItem[] */
     protected $icTransferItems = [];
 
-    public function getRecordNo(): string
+    public function getRecordNo(): string|null
     {
         return $this->recordNo;
     }
@@ -66,7 +66,7 @@ abstract class AbstractWarehouseTransfer extends AbstractFunction
         $this->referenceNo = $referenceNo;
     }
 
-    public function getDescription(): string
+    public function getDescription(): string|null
     {
         return $this->description;
     }
@@ -76,7 +76,7 @@ abstract class AbstractWarehouseTransfer extends AbstractFunction
         $this->description = $description;
     }
 
-    public function getTransferType(): string
+    public function getTransferType(): string|null
     {
         return $this->transferType;
     }
@@ -89,7 +89,7 @@ abstract class AbstractWarehouseTransfer extends AbstractFunction
         $this->transferType = $transferType;
     }
 
-    public function getAction(): string
+    public function getAction(): string|null
     {
         return $this->action;
     }
@@ -114,7 +114,7 @@ abstract class AbstractWarehouseTransfer extends AbstractFunction
         $this->action = $action;
     }
 
-    public function getOutDate(): string
+    public function getOutDate(): string|null
     {
         return $this->outDate;
     }
@@ -124,7 +124,7 @@ abstract class AbstractWarehouseTransfer extends AbstractFunction
         $this->outDate = $outDate;
     }
 
-    public function getInDate(): string
+    public function getInDate(): string|null
     {
         return $this->inDate;
     }
