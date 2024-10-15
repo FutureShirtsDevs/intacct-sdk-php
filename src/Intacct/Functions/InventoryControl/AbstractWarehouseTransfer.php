@@ -56,7 +56,7 @@ abstract class AbstractWarehouseTransfer extends AbstractFunction
         $this->transactionDate = $transactionDate;
     }
 
-    public function getReferenceNo(): string
+    public function getReferenceNo(): string|null
     {
         return $this->referenceNo;
     }
