@@ -55,8 +55,8 @@ class DisassembleKit extends AbstractInventoryTransaction
         $xml->endElement(); //datecreated
 
         $xml->writeElement("createdfrom", $this->getCreatedFrom());
-        $xml->writeElement("referenceno", $this->getReferenceNumber());
-        $xml->writeElement("message", $this->getMessage());
+        $xml->writeElement("referenceno", $this->getReferenceNumber(), true);
+        $xml->writeElement("message", $this->getMessage(), true);
 
         $this->writeXmlExplicitCustomFields($xml);
 
