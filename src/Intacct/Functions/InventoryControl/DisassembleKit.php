@@ -60,8 +60,6 @@ class DisassembleKit extends AbstractInventoryTransaction
 
         $this->writeXmlExplicitCustomFields($xml);
 
-        $xml->endElement(); //ictransitems
-
         $xml->endElement(); //create_ictransaction
 
         $xml->endElement(); //function
