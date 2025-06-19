@@ -33,7 +33,7 @@ abstract class AbstractClient
     const PROFILE_ENV_NAME = 'INTACCT_PROFILE';
 
     /** @var ClientConfig */
-    private $config;
+    private ClientConfig $config;
 
     /**
      * @return ClientConfig
@@ -55,9 +55,9 @@ abstract class AbstractClient
     /**
      * AbstractClient constructor.
      *
-     * @param ClientConfig $config
+     * @param ?ClientConfig $config
      */
-    public function __construct(ClientConfig $config = null)
+    public function __construct(?ClientConfig $config = null)
     {
         if (!$config) {
             $config = new ClientConfig();
@@ -82,11 +82,11 @@ abstract class AbstractClient
 
     /**
      * @param array $functions
-     * @param RequestConfig $requestConfig
+     * @param ?RequestConfig $requestConfig
      *
      * @return Xml\OnlineResponse
      */
-    protected function executeOnlineRequest(array $functions, RequestConfig &$requestConfig = null)
+    protected function executeOnlineRequest(array $functions, ?RequestConfig &$requestConfig = null)
     {
         if (!$requestConfig) {
             $requestConfig = new RequestConfig();
@@ -99,11 +99,11 @@ abstract class AbstractClient
 
     /**
      * @param array $functions
-     * @param RequestConfig $requestConfig
+     * @param ?RequestConfig $requestConfig
      *
      * @return Xml\OfflineResponse
      */
-    protected function executeOfflineRequest(array $functions, RequestConfig $requestConfig = null)
+    protected function executeOfflineRequest(array $functions, ?RequestConfig $requestConfig = null)
     {
         if (!$requestConfig) {
             $requestConfig = new RequestConfig();
