@@ -25,10 +25,10 @@ class SessionProvider
 {
 
     /**
-     * @param ClientConfig $config
+     * @param ?ClientConfig $config
      * @return ClientConfig
      */
-    public static function factory(ClientConfig $config = null): ClientConfig
+    public static function factory(?ClientConfig $config = null): ClientConfig
     {
         if (!$config) {
             $config = new ClientConfig();
