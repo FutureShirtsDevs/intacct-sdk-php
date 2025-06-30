@@ -19,7 +19,7 @@ namespace Intacct\Xml\Response;
 
 class ErrorMessage
 {
-    
+
     /** @var array */
     private $errors;
 
@@ -44,7 +44,7 @@ class ErrorMessage
      *
      * @param \SimpleXMLElement|null $errorMessage
      */
-    public function __construct(\SimpleXMLElement $errorMessage = null)
+    public function __construct(\SimpleXMLElement|null $errorMessage = null)
     {
         $errors = [];
         foreach ($errorMessage->{'error'} as $error) {

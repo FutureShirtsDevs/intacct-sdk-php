@@ -31,9 +31,9 @@ class ResultException extends ResponseException
      * @param string $message
      * @param array $errors
      * @param int $code
-     * @param \Exception $previous
+     * @param \Exception|null $previous
      */
-    public function __construct(string $message, array $errors = [], int $code = 0, \Exception $previous = null)
+    public function __construct(string $message, array $errors = [], int $code = 0, \Exception|null $previous = null)
     {
         parent::__construct($message, $errors, $code, $previous);
     }

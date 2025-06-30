@@ -27,10 +27,10 @@ class OfflineClient extends AbstractClient
      * Execute one Sage Intacct API function
      *
      * @param FunctionInterface $function
-     * @param RequestConfig $requestConfig
+     * @param RequestConfig|null $requestConfig
      * @return OfflineResponse
      */
-    public function execute(FunctionInterface $function, RequestConfig $requestConfig = null): OfflineResponse
+    public function execute(FunctionInterface $function, ?RequestConfig $requestConfig = null): OfflineResponse
     {
         return $this->executeOfflineRequest([ $function ], $requestConfig);
     }
@@ -39,10 +39,10 @@ class OfflineClient extends AbstractClient
      * Execute multiple Sage Intacct API functions
      *
      * @param FunctionInterface[] $functions
-     * @param RequestConfig $requestConfig
+     * @param RequestConfig|null $requestConfig
      * @return OfflineResponse
      */
-    public function executeBatch(array $functions, RequestConfig $requestConfig = null): OfflineResponse
+    public function executeBatch(array $functions, ?RequestConfig $requestConfig = null): OfflineResponse
     {
         return $this->executeOfflineRequest($functions, $requestConfig);
     }

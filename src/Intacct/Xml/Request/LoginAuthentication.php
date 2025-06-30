@@ -121,7 +121,7 @@ class LoginAuthentication implements AuthenticationInterface
      * @param string $password
      * @param string|null $entityId
      */
-    public function __construct(string $userId, string $companyId, string $password, string $entityId = null)
+    public function __construct(string $userId, string $companyId, string $password, ?string $entityId = null)
     {
         $this->setUserId($userId);
         $this->setCompanyId($companyId);

@@ -34,9 +34,9 @@ class ResponseException extends \RuntimeException
      * @param string $message
      * @param array $errors
      * @param int $code
-     * @param \Exception $previous
+     * @param \Exception|null $previous
      */
-    public function __construct(string $message, array $errors = [], int $code = 0, \Exception $previous = null)
+    public function __construct(string $message, array $errors = [], int $code = 0, \Exception|null $previous = null)
     {
         $this->errors = $errors;
 
@@ -46,7 +46,7 @@ class ResponseException extends \RuntimeException
 
         parent::__construct($message, $code, $previous);
     }
-    
+
     /**
      * Get response errors as an array
      *
