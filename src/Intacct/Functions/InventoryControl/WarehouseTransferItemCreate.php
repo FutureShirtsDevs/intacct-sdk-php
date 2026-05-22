@@ -39,7 +39,7 @@ class WarehouseTransferItemCreate extends AbstractWarehouseTransferItem
             $xml->writeElement('UNIT', $this->getUnit());
         }
         $xml->writeElement('LOCATIONID', $this->getLocationId());
-        $xml->writeElement('DEPARTMETNID', $this->getDepartmentId());
+        $xml->writeElement('DEPARTMENTID', $this->getDepartmentId());
         $xml->writeElement('PROJECTID', $this->getProjectId());
         $xml->writeElement('CUSTOMERID', $this->getCustomerId());
         $xml->writeElement('VENDORID', $this->getVendorId());
